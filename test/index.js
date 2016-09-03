@@ -1,23 +1,13 @@
-const pathInfer = require('../index');
+'use strict';
+
 const expect = require('expect');
+const sinon = require('sinon');
+const requireNoCache = require('require-no-cache');
 
-/**
- * ------------------------------------------------------------------------
- * 假设当前目录为指向github的git仓库
- * ------------------------------------------------------------------------
- */
-describe('isReady', () => {
-
-	// 当前非git环境，因此返回false
-	it('show be true', () => {
-		expect(
-			pathInfer.isReady()
-		).toEqual(true);
-	});
-
-});
 
 describe('_getPathByGitUrl', () => {
+
+	let pathInfer = requireNoCache('../index');
 
 	it('getPathFrom valid url show equal to group/reposity', () => {
 
@@ -33,8 +23,25 @@ describe('_getPathByGitUrl', () => {
 
 });
 
+describe('getPath', () => {
+
+	let pathInfer = requireNoCache('../index');
+
+	before(() => {
+		sinon.stub(pathInfer, '_getOriginUrl').returns('git@gitlab.alibaba-inc.com:group/reposity.git');
+	});
+
+	it('should equal group/reposity', () => {
+		expect(
+			pathInfer.getPath()
+		).toEqual('group/reposity');
+	})
+});
+
 
 describe('getVersionByBranch', () => {
+
+	let pathInfer = requireNoCache('../index');
 
 	it('should equal version split form valid branch', () => {
 		expect(
@@ -59,7 +66,80 @@ describe('getVersionByBranch', () => {
 
 });
 
+describe('getVersion', () => {
+
+	let pathInfer = requireNoCache('../index');
+
+	before(() => {
+		sinon.stub(pathInfer, 'getCurrentBranch').returns('daily/5.0.0');
+	});
+
+	it('should equal 5.0.0', () => {
+		expect(
+			pathInfer.getVersion()
+		).toEqual('5.0.0');
+	});
+
+});
+
+describe('getFullPath', () => {
+
+	let pathInfer;
+
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
+		sinon.stub(pathInfer, '_getOriginUrl').returns('git@gitlab.alibaba-inc.com:group/reposity.git');
+		sinon.stub(pathInfer, 'getCurrentBranch').returns('daily/5.0.0');
+	});
+
+	it('should equal //g-assets.daily.taobao.net/group/reposity/5.0.0 when env is pre', () => {
+
+		pathInfer.setEnv('pre');
+
+		expect(
+			pathInfer.getFullPath()
+		).toEqual('//g-assets.daily.taobao.net/group/reposity/5.0.0');
+	});
+
+	it('should equal //g.alicdn.com/group/reposity/5.0.0 when env is prod', () => {
+
+		pathInfer.setEnv('prod');
+
+		expect(
+			pathInfer.getFullPath()
+		).toEqual('//g.alicdn.com/group/reposity/5.0.0');
+	});
+
+	it('should equal ./ when env is dev', () => {
+
+		pathInfer.setEnv('dev');
+
+		expect(
+			pathInfer.getFullPath()
+		).toEqual('./');
+	});
+
+	it('should equal //g-assets.daily.taobao.net/group/reposity/5.0.0 by default', () => {
+		expect(
+			pathInfer.getFullPath()
+		).toEqual('//g-assets.daily.taobao.net/group/reposity/5.0.0');
+	});
+
+
+	it('should equal https://mytestdoamin/group/reposity/5.0.0 when set domain explictily', () => {
+
+		pathInfer.setDomain('https://mytestdoamin');
+
+		expect(
+			pathInfer.getFullPath()
+		).toEqual('https://mytestdoamin/group/reposity/5.0.0');
+	});
+
+});
+
 describe('event', () => {
+
+	let pathInfer = requireNoCache('../index');
 
 	it('should catch an warning', (done) => {
 

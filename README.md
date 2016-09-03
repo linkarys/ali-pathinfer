@@ -15,7 +15,7 @@ Alibaba CDN地址推断, 根据当前的仓库名和分支名推断出线上的c
 返回gitpath, 仓库: `git@gitlab.alibaba-inc.com:group/reposity.git`或`http://gitlab.alibaba-inc.com/group/reposity.git`将返回`group/reposity`
 
 ### getFullPath
-返回完整的推断地址，`getFullPath() = domain + '/' + getPath() + '/' + assert`, 如: `//g.alicdn.com/mcn/lottery.js`
+返回完整的推断地址，`getFullPath() = domain + '/' + getPath() + '/' + assert`, 如: `//g.alicdn.com/mcn/lottery.js`, dev环境将返回`./`
 
 ### getVersion
 推断出当时分支的版本号，`daily/1.0.1`, 将返回`1.0.1`

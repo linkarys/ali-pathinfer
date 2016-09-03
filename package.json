@@ -1,6 +1,6 @@
 {
   "name": "ali-pathinfer",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "根据当前的仓库名和分支名推断出线上的cdn链接。",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,8 @@
     "babel-eslint": "^6.1.2",
     "eslint": "^3.4.0",
     "expect": "^1.20.2",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "require-no-cache": "^0.2.1",
+    "sinon": "^1.17.5"
   }
 }

@@ -7,7 +7,7 @@ const execSync = childProcess.execSync;
 const pathInfer = (() => {
 
 	let domains = {
-		dev: '.',
+		dev: './',
 		daily: '//g-assets.daily.taobao.net',
 		pre: '//g-assets.daily.taobao.net',
 		prod: '//g.alicdn.com',
@@ -132,7 +132,12 @@ const pathInfer = (() => {
 	 * 获取完整路径
 	 * ------------------------------------------------------------------------
 	 */
-	pathInfer.getFullPath = () => domain + '/' + pathInfer.getPath() + '/' + pathInfer.getVersion();
+	pathInfer.getFullPath = () => {
+
+		if (domain === './') return domain;
+
+		return domain + '/' + pathInfer.getPath() + '/' + pathInfer.getVersion();
+	};
 
 	/**
 	 * ------------------------------------------------------------------------
