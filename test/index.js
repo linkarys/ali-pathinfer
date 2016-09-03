@@ -6,7 +6,11 @@ const requireNoCache = require('require-no-cache');
 
 describe('_getPathByGitUrl', () => {
 
-	let pathInfer = requireNoCache('../index');
+	let pathInfer;
+
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
+	});
 
 	it('getPathFrom valid url show equal to group/reposity', () => {
 
@@ -24,9 +28,10 @@ describe('_getPathByGitUrl', () => {
 
 describe('getPath', () => {
 
-	let pathInfer = requireNoCache('../index');
+	let pathInfer;
 
-	before(() => {
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
 		sinon.stub(pathInfer, '_getOriginUrl').returns('git@gitlab.alibaba-inc.com:group/reposity.git');
 	});
 
@@ -40,7 +45,11 @@ describe('getPath', () => {
 
 describe('getVersionByBranch', () => {
 
-	let pathInfer = requireNoCache('../index');
+	let pathInfer;
+
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
+	});
 
 	it('should equal version split form valid branch', () => {
 		expect(
@@ -67,11 +76,14 @@ describe('getVersionByBranch', () => {
 
 describe('getVersion', () => {
 
-	let pathInfer = requireNoCache('../index');
 
-	before(() => {
+	let pathInfer;
+
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
 		sinon.stub(pathInfer, 'getCurrentBranch').returns('daily/5.0.0');
 	});
+
 
 	it('should equal 5.0.0', () => {
 		expect(
@@ -138,7 +150,11 @@ describe('getFullPath', () => {
 
 describe('event', () => {
 
-	let pathInfer = requireNoCache('../index');
+	let pathInfer;
+
+	beforeEach(() => {
+		pathInfer = requireNoCache('../index');
+	});
 
 	it('should catch an warning', (done) => {
 
