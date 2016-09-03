@@ -4,7 +4,6 @@ const expect = require('expect');
 const sinon = require('sinon');
 const requireNoCache = require('require-no-cache');
 
-
 describe('_getPathByGitUrl', () => {
 
 	let pathInfer = requireNoCache('../index');
@@ -35,7 +34,7 @@ describe('getPath', () => {
 		expect(
 			pathInfer.getPath()
 		).toEqual('group/reposity');
-	})
+	});
 });
 
 
@@ -158,7 +157,7 @@ describe('event', () => {
 			done();
 		});
 
-		pathInfer._getPathByGitUrl('http://www.alibaba-inc.com')
+		pathInfer._getPathByGitUrl('http://www.alibaba-inc.com');
 
 	});
 
