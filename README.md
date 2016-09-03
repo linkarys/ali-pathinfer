@@ -1,5 +1,7 @@
 Alibaba CDN地址推断, 根据当前的仓库名和分支名推断出线上的cdn链接。
 
+[![Build Status](https://travis-ci.org/linkarys/ali-pathinfer.svg?branch=master)](https://travis-ci.org/linkarys/ali-pathinfer)
+
 ## 依赖
 
 请使用node4.0以上版本。
