@@ -51,5 +51,5 @@ pathInfer.emitter.on('warning', (msg) => {
 
 
 ## 更新历史
-
+- 1.0.9: 添加.travis.ymal
 - 1.0.7: 添加简易测试代码
