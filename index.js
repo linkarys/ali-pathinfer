@@ -30,7 +30,17 @@ const pathInfer = (() => {
 	 *    http://gitlab.alibaba-inc.com/group/reposity.git
 	 * ------------------------------------------------------------------------
 	 */
-	pathInfer._getPathByGitUrl = originUrl => (/gitlab\.alibaba-inc\.com(?:\:|\/)([A-Za-z0-9\-\._ ~:\/?#\[\]@!$&'\(\)*\+,;=]+)\.git$/.exec(originUrl) || [])[1];
+	pathInfer._getPathByGitUrl = originUrl => {
+
+		let match = (/gitlab\.alibaba-inc\.com(?:\:|\/)([A-Za-z0-9\-\._ ~:\/?#\[\]@!$&'\(\)*\+,;=]+)\.git$/.exec(originUrl)) || [];
+
+		if (!match.length || !match[1]) {
+			emitter.emit('error', '当前仓库不合法');
+		}
+
+		return match[1] || '';
+
+	};
 
 	/**
 	 * ------------------------------------------------------------------------

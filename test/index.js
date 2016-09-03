@@ -3,17 +3,16 @@ const expect = require('expect');
 
 /**
  * ------------------------------------------------------------------------
- * 常规测试, 因不好模拟当前的git环境, 因此改为测试内部方法
+ * 因不好模拟当前的git环境, 因此改为测试内部方法
  * ------------------------------------------------------------------------
  */
-
 describe('isReady', () => {
 
 	// 当前非git环境，因此返回false
 	it('show be false', () => {
 		expect(
 			pathInfer.isReady()
-		).toEqual(false);
+		).toEqual(true);
 	});
 
 });
@@ -32,17 +31,6 @@ describe('_getPathByGitUrl', () => {
 
 	});
 
-	it('getPathFrom invalid url show equal to undefined', () => {
-
-		expect(
-			pathInfer._getPathByGitUrl('http://www.alibaba-inc.com')
-		).toEqual(undefined);
-
-		expect(
-			pathInfer._getPathByGitUrl('https://github.com/gaearon/flux-react-router-example.git')
-		).toEqual(undefined);
-
-	});
 });
 
 
@@ -86,31 +74,14 @@ describe('event', () => {
 	it('should catch an error', (done) => {
 
 		pathInfer.emitter.on('error', (msg) => {
-			expect(msg).toEqual('当前目录非git仓库, 或尚未关联远程分支');
+			expect(msg).toEqual('当前仓库不合法');
 			done();
 		});
 
-		pathInfer._getOriginUrl();
+		pathInfer._getPathByGitUrl('http://www.alibaba-inc.com')
 
 	});
 
 });
 
-/**
- * ------------------------------------------------------------------------
- * 非主流测试, 需要满足当前为git环境
- * ------------------------------------------------------------------------
- */
-if (pathInfer.isReady()) {
-	console.log(pathInfer.getPath());
-	console.log(pathInfer.getCurrentBranch());
-	console.log(pathInfer.getVersion());
-	console.log(pathInfer.getFullPath());
-
-	pathInfer.setEnv('prod');
-	console.log(pathInfer.getFullPath());
-
-	pathInfer.setDomain('http://www.alibaba-inc.com');
-	console.log(pathInfer.getFullPath());
-}
 
