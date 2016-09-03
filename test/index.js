@@ -3,13 +3,13 @@ const expect = require('expect');
 
 /**
  * ------------------------------------------------------------------------
- * 因不好模拟当前的git环境, 因此改为测试内部方法
+ * 假设当前目录为指向github的git仓库
  * ------------------------------------------------------------------------
  */
 describe('isReady', () => {
 
 	// 当前非git环境，因此返回false
-	it('show be false', () => {
+	it('show be true', () => {
 		expect(
 			pathInfer.isReady()
 		).toEqual(true);

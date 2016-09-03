@@ -1,6 +1,6 @@
 {
   "name": "ali-pathinfer",
-  "version": "1.0.9",
+  "version": "1.1.4",
   "description": "根据当前的仓库名和分支名推断出线上的cdn链接。",
   "main": "index.js",
   "scripts": {
