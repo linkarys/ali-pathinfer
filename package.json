@@ -1,6 +1,6 @@
 {
   "name": "ali-pathinfer",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "根据当前的仓库名和分支名推断出线上的cdn链接。",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,11 @@
   "author": "linkarys <linkarys@gmail.com>",
   "license": "ISC",
   "dependencies": {},
+  "keywords": [
+    "Alibaba",
+    "path",
+    "infer"
+  ],
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "eslint": "^3.4.0",
