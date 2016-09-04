@@ -1,6 +1,10 @@
 Alibaba CDN地址推断, 根据当前的仓库名和分支名推断出线上的cdn链接。
 
+[![npm][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/linkarys/ali-pathinfer.svg?branch=master)](https://travis-ci.org/linkarys/ali-pathinfer)
+
+[npm-image]: https://img.shields.io/npm/v/ali-pathinfer.svg
+[npm-url]: https://www.npmjs.com/package/ali-pathinfer
 
 ## 依赖
 
@@ -39,7 +43,7 @@ Alibaba CDN地址推断, 根据当前的仓库名和分支名推断出线上的c
 
 ```javavscript
 
-const pathInfer = require('pathInfer');
+const pathInfer = require('ali-pathinfer');
 
 pathInfer.emitter.on('error', (msg) => {
 	console.log(msg);
