@@ -115,7 +115,7 @@ const pathInfer = (() => {
 	pathInfer.getVersionByBranch = (branch) => {
 		if (/daily\/[\d\.]+/.test(branch)) return branch.split('\/')[1];
 
-		emitter.emit('warning', `分支不满足daily/x.y.z的命名规范, 将返回默认版本: ${defaultVersion}`);
+		emitter.emit('warning', `当前分支不满足daily/x.y.z的命名规范, 将返回默认版本: ${defaultVersion}`);
 		return defaultVersion;
 	};
 
@@ -165,6 +165,7 @@ const pathInfer = (() => {
 	pathInfer.setDefaultVersion = version => {
 		defaultVersion = version;
 	};
+
 
 	return pathInfer;
 
