@@ -1,12 +1,15 @@
 {
   "name": "ali-pathinfer",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "根据当前的仓库名和分支名推断出线上的cdn链接。",
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha test/index.js",
     "lint": "node node_modules/eslint/bin/eslint.js index.js test",
     "lint:fix": "npm run lint -- --fix"
+  },
+  "engines" : {
+  	"node" : ">=4.0"
   },
   "author": "linkarys <linkarys@gmail.com>",
   "license": "ISC",

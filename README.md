@@ -6,10 +6,6 @@ Alibaba CDN地址推断, 根据当前的仓库名和分支名推断出线上的c
 [npm-image]: https://img.shields.io/npm/v/ali-pathinfer.svg
 [npm-url]: https://www.npmjs.com/package/ali-pathinfer
 
-## 依赖
-
-请使用node4.0以上版本。
-
 ## API
 
 ### isReady
