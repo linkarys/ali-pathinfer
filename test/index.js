@@ -121,13 +121,13 @@ describe('getFullPath', () => {
 		).toEqual('//g.alicdn.com/group/reposity/5.0.0');
 	});
 
-	it('should equal ./ when env is dev', () => {
+	it('should equal . when env is dev', () => {
 
 		pathInfer.setEnv('dev');
 
 		expect(
 			pathInfer.getFullPath()
-		).toEqual('./');
+		).toEqual('.');
 	});
 
 	it('should equal //g-assets.daily.taobao.net/group/reposity/5.0.0 by default', () => {
